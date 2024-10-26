@@ -1,0 +1,260 @@
+/* Import des variables */
+@import "../../styles/variables.css";
+
+/* Désactive la sélection de texte et l'effet bleu de sélection */
+* {
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Animation d'entrée pour la section skills-section */
+.skills-section {
+    padding: 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInSlideUp 1s ease-out forwards;
+}
+
+.skills-section h2 {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+/* Style des icônes */
+.skills-icons {
+    gap: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+    max-width: 1200px;
+    align-items: flex-start; /* Important pour que chaque élément garde sa hauteur */
+}
+
+/* Style des items normaux */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #b5a2dd;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    transform: scale(0.8);
+    will-change: transform, opacity;
+    animation: zoomInFade 0.8s ease-out forwards;
+    animation-delay: 1 * 0.2s;
+    max-width: 160px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    outline: none;
+    transition: transform 0.3s ease, box-shadow 0.4s ease,
+        background-color 0.4s ease, opacity 0.4s ease,
+        max-height 0.5s ease-in-out;
+    height: auto; /* Laisser une hauteur dynamique */
+    flex-grow: 1; /* Chaque élément peut prendre l'espace nécessaire */
+    max-height: 150px; /* Limite initiale pour les éléments normaux */
+    overflow: hidden; /* Masquer tout dépassement de contenu */
+}
+/* Amélioration de l'effet de survol */
+@media (hover: hover) {
+    .skill-item:hover,
+    .skill-item:focus {
+        transform: translateY(-10px) scale(1.1); /* Amélioration du survol */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2),
+            inset 0 0 18px rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: white;
+    }
+}
+
+.skill-item:active {
+    transform: translateY(-5px) scale(1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Icon and text color on hover and active */
+.skill-item:hover .icon,
+.skill-item:active .icon {
+    color: white;
+    transition: color 0.3s ease, transform 0.6s ease;
+}
+
+.skill-item:hover span,
+.skill-item:active span {
+    color: white;
+}
+
+/* Style des icônes */
+.icon {
+    font-size: 4rem;
+
+    color: rgb(178, 119, 255);
+    transition: color 0.3s ease, transform 0.4s ease;
+    background: linear-gradient(
+        145deg,
+        var(--secondary-color),
+        var(--accent-color)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Texte pour les compétences */
+
+.skill-item span {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #9b7ddd;
+}
+
+/* Locked state styles */
+.skill-item.locked {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 420px;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    transition: all 0.4s ease;
+    height: auto; /* Laisser la hauteur automatique */
+    flex-grow: 0; /* Laisser chaque élément gérer sa propre hauteur */
+    max-height: 600px; /* Hauteur maximale lorsque verrouillé */
+    overflow: hidden; /* Masquer tout débordement pendant la transition */
+}
+
+/* Make text and icons white in locked state */
+.skill-item.locked * {
+    color: white;
+}
+
+/* Positionnement de l'icône dans le mode verrouillé */
+.skill-item.locked .icon-container {
+    margin-right: 20px;
+    font-size: 3.2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Positionnement du texte et des détails dans le mode verrouillé */
+.skill-item.locked .skill-text {
+    flex-grow: 1;
+}
+.skill-item.locked span {
+    display: none;
+}
+.skill-item.locked .skill-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    white-space: pre-wrap;
+}
+.explore-section-title {
+    font-size: 2rem;
+    text-align: center;
+    padding: 16px 0;
+}
+/* Animations */
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes zoomInFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive design for tablets */
+@media (max-width: 768px) {
+    .explore-section-title {
+        font-size: 2rem;
+    }
+    .skills-section {
+        padding: 20px;
+    }
+
+    .skills-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .skills-icons {
+        gap: 25px;
+    }
+
+    .icon {
+        font-size: 3.5rem;
+    }
+
+    .skill-item {
+        max-width: 130px;
+        padding: 20px;
+    }
+
+    .skill-item span {
+        font-size: 1rem;
+    }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 15px;
+    }
+    .explore-section-title {
+        font-size: 1.8rem;
+    }
+
+    .skills-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .skills-icons {
+        gap: 20px;
+    }
+
+    .icon {
+        font-size: 2.8rem;
+    }
+
+    .skill-item {
+        max-width: 110px;
+    }
+
+    .skill-item span {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,322 @@
+/* Importation des variables */
+@import url(../variables.css);
+
+/* Container for the entire testimonials section */
+
+.testimonials-section {
+    max-width: var(--container-max-width);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0 auto;
+}
+
+.testimonials-column-container {
+    padding: var(--spacing-md);
+
+    border-radius: 10px;
+
+    width: 100%;
+
+    transition: all 0.3s ease-in-out;
+}
+
+/* Title for the testimonials section */
+.testimonials-column-title {
+    font-size: 2rem;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-family-titles);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+}
+
+/* Average rating display */
+.testimonials-average-rating {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+}
+
+.static-star-rating {
+    display: inline-flex;
+    align-items: center;
+    color: var(--accent-color);
+    pointer-events: none;
+    cursor: default;
+}
+
+.static-star-rating span {
+    margin-right: var(--spacing-xs);
+}
+
+.testimonials-average-star-rating {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+/* Star display */
+.testimonials-column-star {
+    font-size: 1.5rem;
+    color: #ccc;
+}
+
+.testimonials-column-star.filled {
+    color: var(--accent-color);
+}
+
+/* Testimonials list styling */
+.testimonials-column-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Each review item styling */
+.testimonials-column-item {
+    padding: var(--spacing-md);
+    background-color: var(--primary-dark);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    color: var(--text-light);
+}
+
+.testimonials-column-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Title of each review */
+.testimonials-column-title-item {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Star rating inside each review */
+.testimonials-column-star-rating {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Limitation par défaut à 3 lignes pour les avis */
+.testimonials-column-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limite à 3 lignes */
+    -webkit-box-orient: vertical;
+    word-wrap: break-word; /* Assure que les mots se cassent aux bords */
+    overflow-wrap: break-word; /* Assure le retour à la ligne au-delà des bords */
+    white-space: normal; /* Le texte passe à la ligne */
+    transition: max-height 0.3s ease-in-out;
+    max-height: 4.5em; /* Hauteur pour 3 lignes */
+}
+
+/* Quand l'avis est étendu, supprimer la limite de hauteur */
+.testimonials-column-text.expanded {
+    -webkit-line-clamp: unset;
+    max-height: none; /* Permet au texte de s'afficher entièrement */
+}
+
+/* Style du bouton "Lire plus" / "Cacher" */
+.toggle-review-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.toggle-review-btn:hover {
+    color: var(--button-hover-color);
+}
+
+/* Transition de la hauteur pour l'item */
+.testimonials-column-item.collapsed-item {
+    transition: all 0.3s ease;
+}
+
+.testimonials-column-item.expanded-item {
+    transition: all 0.3s ease;
+    max-height: none; /* Permet d'agrandir la hauteur automatiquement */
+}
+
+/* Author of the review */
+.testimonials-column-author {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: var(--spacing-md);
+    text-align: right;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Image section for reviews */
+.testimonials-column-images {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.testimonials-column-image-preview {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.testimonials-column-review-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.testimonials-column-review-image:hover {
+    transform: scale(1.1);
+}
+
+/* Buttons for showing more/less reviews */
+.testimonials-btn-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--spacing-lg);
+    gap: 8px;
+}
+
+.testimonials-column-show-more-btn,
+.testimonials-column-show-less-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 1rem;
+}
+
+.testimonials-column-show-more-btn:hover,
+.testimonials-column-show-less-btn:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-3px);
+}
+
+.testimonials-column-show-more-btn:focus,
+.testimonials-column-show-less-btn:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--button-hover-color);
+}
+
+.testimonials-column-icon {
+    font-size: 1.2rem;
+}
+
+/* Hidden state for reviews */
+.hidden {
+    display: none;
+}
+
+/* Modal styling */
+.testimonials-column-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.testimonials-column-modal-content {
+    background-color: var(--background-light);
+    border-radius: 10px;
+    padding: var(--spacing-md);
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    color: var(--text-light);
+}
+
+.testimonials-column-modal-image {
+    width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.testimonials-column-close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    background-color: var(--background-light);
+    padding: 5px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.testimonials-column-close-modal:hover {
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .testimonials-column-title {
+        font-size: 1.8rem;
+    }
+
+    .testimonials-column-title-item {
+        font-size: 1.3rem;
+    }
+
+    .testimonials-column-text {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-column-container {
+        padding: var(--spacing-sm);
+    }
+
+    .testimonials-column-title {
+        font-size: 1.5rem;
+    }
+
+    .testimonials-column-item {
+        padding: var(--spacing-sm);
+    }
+
+    .testimonials-column-title-item {
+        font-size: 1.2rem;
+    }
+
+    .testimonials-column-text {
+        font-size: 0.9rem;
+    }
+
+    .testimonials-column-show-more-btn,
+    .testimonials-column-show-less-btn {
+        font-size: 0.9rem;
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+
+    .testimonials-column-images {
+        flex-wrap: wrap;
+    }
+}

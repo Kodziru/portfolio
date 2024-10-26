@@ -1,0 +1,306 @@
+@import url(../variables.css);
+
+/* Marquee effect for testimonials */
+
+/* Adapt Marquee font size and spacing for smaller screens */
+@media (max-width: 768px) {
+    .marquee-content {
+        font-size: 1rem;
+        animation: marquee 25s linear infinite;
+    }
+}
+
+@media (max-width: 576px) {
+    .marquee-content {
+        font-size: 0.9rem;
+        animation: marquee 30s linear infinite;
+    }
+}
+
+@media (max-width: 360px) {
+    .marquee-content {
+        font-size: 0.85rem;
+        animation: marquee 35s linear infinite;
+    }
+}
+
+/* services.css */
+
+/* Container général */
+.services-container {
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Titre principal */
+.services-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(
+        --text-color
+    ); /* Utilisation de la variable pour la couleur du texte */
+    font-size: 2.5rem;
+}
+/* Conteneur des cartes */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+/* Conteneur des cartes */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+/* Style de base pour les cartes */
+.service-card {
+    flex: 1 1 calc(50% - 20px); /* Largeur de 50% moins l'espacement */
+    max-width: calc(50% - 20px); /* Limite la largeur de chaque carte à 50% */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: var(--background-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid transparent;
+    overflow: hidden;
+    margin: 15px 0; /* Espacement vertical */
+}
+
+/* Si la carte est la troisième de la ligne, elle prend 100% de la largeur */
+.cards-container .service-card:nth-child(3n) {
+    flex-basis: 100%; /* Pleine largeur pour la troisième carte */
+    max-width: 100%;
+}
+
+/* Effet au survol */
+.service-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Bordure animée pour l'état actif */
+.service-card.active::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border-radius: 8px;
+    border: 4px solid var(--text-color);
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    z-index: 0;
+}
+
+.service-card::before {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.service-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.service-card h3 {
+    color: var(--accent-light);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .service-card {
+        flex: 1 1 100%; /* Chaque carte prend 100% de la largeur sur les écrans ≤ 768px */
+        max-width: 100%;
+    }
+    .cards-container {
+        width: 100%;
+    }
+    /* Supprime la règle de pleine largeur pour le troisième élément */
+    .cards-container .service-card:nth-child(3n) {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-card {
+        padding: 15px; /* Réduit le padding sur les écrans ≤ 576px */
+        margin: 10px 0;
+    }
+}
+
+/* Bouton "En savoir plus" */
+.btn-more {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-color); /* Utilisation de la couleur du texte */
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-more:hover {
+    background-color: var(
+        --button-hover-color
+    ); /* Utilisation de la couleur de survol */
+    transform: scale(1.05);
+}
+
+/* Bannière promotionnelle */
+.promotion-banner {
+    background-color: var(
+        --accent-color
+    ); /* Utilisation de la couleur d'accent */
+    padding: 15px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.promotion-banner h4 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--text-color); /* Utilisation de la couleur du texte */
+}
+
+.promotion-banner p {
+    font-size: 1.2rem;
+    color: var(
+        --text-light
+    ); /* Utilisation de la couleur de texte secondaire */
+}
+.services-section {
+    margin-top: 32px;
+}
+/* Responsivité */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .services-title {
+        font-size: 2rem;
+    }
+
+    .btn-more {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+        margin-top: 15px;
+    }
+
+    .promotion-banner h4 {
+        font-size: 1.6rem;
+    }
+
+    .promotion-banner p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .services-container {
+    }
+
+    .service-card {
+        width: 100%;
+        margin: 10px 0;
+        padding: 15px;
+    }
+
+    .services-title {
+        font-size: 1.8rem;
+    }
+
+    .btn-more {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    .promotion-banner h4 {
+        font-size: 1.4rem;
+    }
+
+    .promotion-banner p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .services-container {
+        padding: 10px;
+    }
+
+    .services-title {
+        font-size: 1.6rem;
+    }
+
+    .btn-more {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+
+    .promotion-banner h4 {
+        font-size: 1.2rem;
+    }
+
+    .promotion-banner p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 260px) {
+    .services-container {
+        padding: 8px;
+    }
+
+    .service-card {
+        padding: 10px;
+        margin: 8px 0;
+    }
+
+    .services-title {
+        font-size: 1.4rem;
+    }
+
+    .btn-more {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+        margin-top: 8px;
+    }
+
+    .promotion-banner h4 {
+        font-size: 1rem;
+    }
+
+    .promotion-banner p {
+        font-size: 0.75rem;
+    }
+}

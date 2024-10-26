@@ -1,0 +1,11 @@
+{
+    "title": "Clim Time",
+    "description": "Site vitrine sur mesure pour un service de climatisation, adapté spécifiquement aux demandes du client avec un design personnalisé.",
+    "imgSrc": "",
+    "whatWasDone": "Conception de la page d'accueil, optimisation SEO pour service local, et intégration d'un formulaire de contact personnalisé.",
+    "whatToDo": "Ajout d'une section blog et optimisation complète pour les appareils mobiles.",
+    "technologies": ["HTML", "CSS", "JavaScript"],
+    "progress": 100,
+    "features": [{ "feature": "Formulaire de contact", "status": "Complété" }],
+    "challenges": "Aucun challenge rencontré, le travail a été réalisé selon les spécifications du client avec succès."
+}

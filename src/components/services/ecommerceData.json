@@ -1,0 +1,204 @@
+{
+    "cmsOptions": [
+        {
+            "name": "Installation et configuration CMS",
+            "cost": "300 € - 800 €",
+            "important": true,
+            "about": "Mise en place initiale du CMS pour gérer le contenu de manière autonome."
+        },
+        {
+            "name": "SEO de base",
+            "cost": "200 € - 600 €",
+            "important": true,
+            "about": "Optimisation pour améliorer la visibilité du site sur les moteurs de recherche."
+        },
+        {
+            "name": "Intégration de plugins et extensions",
+            "cost": "150 € - 400 €",
+            "important": true,
+            "about": "Ajout de fonctionnalités supplémentaires via des plugins adaptés."
+        },
+        {
+            "name": "Sécurisation des données et sauvegardes",
+            "cost": "300 € - 700 €",
+
+            "about": "Protection des données et sauvegardes régulières pour éviter toute perte d'information."
+        },
+        {
+            "name": "Audit de sécurité",
+            "cost": "250 € - 600 €",
+
+            "about": "Évaluation des vulnérabilités pour assurer la sécurité des données."
+        },
+        {
+            "name": "Support technique et maintenance",
+            "cost": "200 € - 500 € par mois",
+
+            "about": "Assistance continue pour résoudre les problèmes techniques."
+        },
+        {
+            "name": "Personnalisation de thèmes",
+            "cost": "300 € - 1000 €",
+            "about": "Modification du design pour qu'il corresponde à l'identité visuelle de la marque."
+        },
+        {
+            "name": "Création de contenu (pages produits, blog)",
+            "cost": "100 € - 500 €",
+            "about": "Création et ajout de contenu comme des pages produits ou articles de blog."
+        },
+        {
+            "name": "Automatisation de contenu",
+            "cost": "200 € - 500 €",
+            "about": "Automatisation des publications et des mises à jour de contenu."
+        },
+        {
+            "name": "Formation à l'utilisation du CMS",
+            "cost": "100 € - 300 €",
+            "about": "Formation pour rendre l'équipe autonome dans la gestion du contenu."
+        },
+        {
+            "name": "Mises à jour régulières",
+            "cost": "50 € - 150 € par mois",
+            "about": "Mise à jour du CMS et des plugins pour assurer leur bon fonctionnement."
+        },
+        {
+            "name": "Gestion de newsletter",
+            "cost": "150 € - 400 €",
+            "about": "Configuration et gestion d'une newsletter pour engager votre audience."
+        },
+        {
+            "name": "Multilinguisme",
+            "cost": "300 € - 700 €",
+            "about": "Mise en place de fonctionnalités pour un site multilingue, permettant de toucher différents marchés."
+        },
+        {
+            "name": "Optimisation mobile",
+            "cost": "200 € - 500 €",
+            "about": "Adaptation du site pour une meilleure performance et apparence sur les appareils mobiles."
+        },
+        {
+            "name": "Intégration de gestion de stock",
+            "cost": "250 € - 600 €",
+            "about": "Ajout d'un système de gestion des stocks pour les sites e-commerce."
+        },
+        {
+            "name": "Création de pages de renvoi (landing pages)",
+            "cost": "100 € - 400 €",
+            "about": "Développement de pages optimisées pour la conversion des visiteurs."
+        },
+        {
+            "name": "Configuration de paiement sécurisé",
+            "cost": "300 € - 800 €",
+            "about": "Implémentation d'options de paiement sécurisées pour les transactions en ligne."
+        }
+    ],
+    "customDevelopmentOptions": [
+        {
+            "name": "Développement backend",
+            "cost": "900 € - 2200 €",
+            "important": true,
+            "about": "Création du serveur, de la base de données et de la logique métier."
+        },
+        {
+            "name": "Développement d'interface utilisateur (UI/UX)",
+            "cost": "500 € - 1400 €",
+            "important": true,
+            "about": "Conception de l'interface et amélioration de l'expérience utilisateur."
+        },
+        {
+            "name": "Développement frontend (HTML/CSS/JS)",
+            "cost": "700 € - 1600 €",
+            "important": true,
+            "about": "Création de l'interface utilisateur visible pour un site ou une application."
+        },
+        {
+            "name": "Mise en place d'une architecture microservices",
+            "cost": "800 € - 2000 €",
+            "about": "Organisation de l'application en petits services indépendants pour plus de flexibilité."
+        },
+
+        {
+            "name": "Consultation en architecture logicielle",
+            "cost": "50 € - 100 €",
+            "about": "Conseil sur la meilleure structure logicielle pour une performance optimale."
+        },
+
+        {
+            "name": "Intégration avec CRM",
+            "cost": "350 € - 1100 €",
+            "about": "Connexion du site avec un outil de gestion de la relation client (CRM)."
+        },
+        {
+            "name": "Test et validation de qualité (QA)",
+            "cost": "450 € - 1100 €",
+            "about": "Vérification du bon fonctionnement et de la fiabilité du site ou de l'application."
+        },
+        {
+            "name": "Migration de données",
+            "cost": "400 € - 1100 €",
+            "about": "Transfert sécurisé des données d'une ancienne application vers une nouvelle."
+        },
+        {
+            "name": "Optimisation des performances",
+            "cost": "350 € - 950 €",
+            "about": "Amélioration de la vitesse et de la fluidité du site pour une meilleure expérience."
+        },
+        {
+            "name": "Conformité RGPD (mise en place et audit)",
+            "cost": "400 € - 1000 €",
+            "about": "Assurer la protection des données utilisateurs et le respect des normes RGPD."
+        },
+
+        {
+            "name": "Mise en place d'authentification multi-facteurs",
+            "cost": "300 € - 800 €",
+
+            "about": "Ajout de sécurité supplémentaire avec plusieurs étapes d'authentification."
+        },
+        {
+            "name": "Développement d'API",
+            "cost": "600 € - 1300 €",
+            "about": "Création d'interfaces pour que différentes applications puissent interagir."
+        },
+        {
+            "name": "Design graphique personnalisé",
+            "cost": "600 € - 1600 €",
+            "about": "Création de visuels uniques pour renforcer l'identité visuelle."
+        },
+        {
+            "name": "Développement d'intégration tierce (API externes, services cloud)",
+            "cost": "600 € - 1300 €",
+            "about": "Connexion du site à des services externes pour ajouter des fonctionnalités."
+        },
+        {
+            "name": "Création d'un tableau de bord analytique",
+            "cost": "500 € - 1200 €",
+            "about": "Développement d'un tableau de bord pour suivre et analyser les données clés."
+        },
+        {
+            "name": "Support technique 24/7",
+            "cost": "400 € - 900 € par mois",
+            "about": "Assistance technique disponible à tout moment pour résoudre les problèmes."
+        },
+        {
+            "name": "Automatisation des processus",
+            "cost": "450 € - 950 €",
+            "about": "Mise en place d'automatisations pour gagner du temps et réduire les erreurs."
+        },
+        {
+            "name": "Tests de charge et de performance",
+            "cost": "300 € - 1000 €",
+            "about": "Évaluation de la capacité de l'application à gérer un grand nombre d'utilisateurs."
+        },
+        {
+            "name": "Automatisation des tests",
+            "cost": "400 € - 950 €",
+            "about": "Création de tests automatiques pour garantir la stabilité du site."
+        },
+        {
+            "name": "Création de logo",
+            "cost": "200 € - 600 €",
+            "about": "Conception d'un logo distinctif pour représenter la marque."
+        }
+    ]
+}

@@ -1,0 +1,298 @@
+/* styles.css */
+@import url("./services/common.css");
+@import url("./contact.css");
+@import url("./variables.css");
+
+/* Reset for consistency across browsers */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%; /* Use relative units for better scalability */
+    @media (max-width: 1200px) {
+        font-size: 95%;
+    }
+    @media (max-width: 768px) {
+        font-size: 90%;
+    }
+    @media (max-width: 480px) {
+        font-size: 85%;
+    }
+    @media (max-width: 320px) {
+        font-size: 80%;
+    }
+}
+
+body {
+    font-family: var(--font-family-base); /* Applying Noto Sans for the body */
+    background-color: var(--background-color); /* Background using variable */
+    color: var(--text-color); /* Text color using variable */
+    font-size: var(--font-size-base); /* Base font size using variable */
+    line-height: 1.6; /* Improve readability */
+}
+/* Styles globaux de la scrollbar pour tout le site */
+::-webkit-scrollbar {
+    width: 6px; /* Largeur de la scrollbar */
+}
+
+::-webkit-scrollbar-button {
+    display: none !important; /* S'assurer de masquer les boutons, ajout de !important pour forcer l'application */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* Fond transparent pour la piste */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color); /* Couleur de la partie défilante */
+    border-radius: 10px; /* Arrondir les coins du thumb */
+    border: 1px solid var(--background-light); /* Bordure autour du thumb */
+}
+
+/* Pour assurer la compatibilité avec Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    overflow-x: hidden;
+}
+
+/* Container for centering content */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* Main structure */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+/* Glass Effect for sections */
+section,
+.section-content,
+.testimonials-column-container {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+
+    padding: var(--spacing-sm);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+section:hover {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+
+    font-family: var(
+        --font-family-titles
+    ); /* Applying Josefin Sans for headings */
+    font-weight: var(--font-weight-bold); /* Use bold weight for headings */
+}
+
+/* Responsive font sizes for headings */
+h1 {
+    font-size: 2.5rem;
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+    @media (max-width: 480px) {
+        font-size: 1.75rem;
+    }
+}
+
+h2 {
+    font-size: 2rem;
+    @media (max-width: 768px) {
+        font-size: 1.75rem;
+    }
+    @media (max-width: 480px) {
+        font-size: 1.5rem;
+    }
+}
+
+p,
+a,
+li {
+    font-size: 1rem;
+    @media (max-width: 768px) {
+        font-size: 0.95rem;
+    }
+    @media (max-width: 480px) {
+        font-size: 0.9rem;
+    }
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: var(--primary-color); /* Using primary color for links */
+}
+
+/* Buttons */
+.button {
+    padding: var(--spacing-sm);
+    background-color: var(--accent-color); /* Using accent color for buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: var(
+        --font-family-titles
+    ); /* Applying Josefin Sans for buttons */
+}
+
+.button:hover {
+    background-color: var(
+        --button-hover-color
+    ); /* Using hover color for buttons */
+}
+
+.button-danger {
+    background-color: var(
+        --danger-color
+    ); /* Using danger color for danger buttons */
+}
+
+.button-danger:hover {
+    background-color: var(
+        --danger-hover-color
+    ); /* Using hover danger color for buttons */
+}
+
+/* Custom Checkboxes */
+.custom-checkbox {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    -webkit-appearance: none;
+    background-color: var(
+        --background-color
+    ); /* Utilisation de la couleur de fond */
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+.custom-checkbox:checked {
+    background-color: var(
+        --accent-light
+    ); /* Utilisation de la couleur primaire */
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.custom-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 4px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.custom-checkbox:hover {
+    border-color: #777;
+    box-shadow: 0 0 5px rgba(119, 119, 119, 0.5);
+}
+
+.custom-checkbox:focus {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.checkbox-container label {
+    margin-left: 12px;
+    color: var(
+        --text-color
+    ); /* Couleur du texte pour les étiquettes de cases à cocher */
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.custom-checkbox:checked ~ label {
+    color: var(
+        --primary-color
+    ); /* Changement de couleur lors de la sélection */
+}
+.checkbox-container-align {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+/* Modals */
+.modal {
+    background-color: var(
+        --modal-background-color
+    ); /* Modal background color */
+    padding: var(--spacing-md);
+    border-radius: 10px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    section {
+        width: 100%;
+        padding: var(--spacing-sm);
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+@media (min-width: 769px) {
+    section {
+        width: 100%;
+        padding: var(--spacing-md);
+    }
+}
+
+/* Very small screens (less than 400px) */
+@media (max-width: 400px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    section {
+        padding: var(--spacing-sm);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        font-size: 1.2rem;
+    }
+
+    a {
+        font-size: 0.9rem;
+    }
+}

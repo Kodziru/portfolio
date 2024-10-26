@@ -1,0 +1,107 @@
+/* Generic Tables */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 20px;
+    background-color: var(--background-light); /* Fond clair */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    padding: 15px;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.table th {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--primary-light);
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: var(
+        --background-light
+    ); /* Couleur de fond pour les lignes paires */
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: var(
+        --primary-dark
+    ); /* Couleur de fond pour les lignes impaires, plus sombre */
+}
+
+.table tbody tr:hover {
+    background-color: var(--background-color); /* Fond au survol */
+}
+
+/* Responsive Table */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    contain: layout;
+}
+
+/* Responsive styling for tables */
+@media (max-width: 576px) {
+    .table {
+        display: block;
+    }
+
+    .table td input[type="checkbox"] {
+        position: relative;
+        left: 0;
+        margin-left: 0;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody {
+        display: block;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+        background-color: var(--background-light);
+        border-radius: 8px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 10px;
+        text-align: right;
+        border-bottom: 1px solid var(--primary-light);
+    }
+
+    .table td::before {
+        position: relative;
+        left: 0;
+        white-space: nowrap;
+        font-weight: bold;
+        margin-right: 10px;
+        content: attr(data-label);
+    }
+
+    .table td:last-child {
+        border-bottom: none;
+    }
+}

@@ -1,0 +1,285 @@
+@import url(./Services.css);
+@import url(./ServicesSections.css);
+@import url(./ServicesTable.css);
+@import url(../variables.css);
+
+.container {
+    max-width: var(
+        --container-max-width
+    ); /* Utilisation de la variable pour la largeur maximale */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* General Titles */
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-color); /* Utilisation de la couleur du texte */
+}
+
+/* Generic Buttons */
+.btn {
+    background-color: var(
+        --primary-color
+    ); /* Couleur primaire pour les boutons */
+    color: var(--accent-light); /* Couleur du texte */
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(
+        --button-hover-color
+    ); /* Utilisation de la couleur au survol */
+    transform: scale(1.05);
+    color: var(--text-light);
+}
+
+/* Specific back button */
+.btn-back {
+    background-color: var(
+        --accent-light
+    ); /* Couleur de fond pour le bouton retour */
+    color: var(--text-color); /* Couleur de texte pour le bouton retour */
+}
+
+.btn-back:hover {
+    background-color: var(--text-light); /* Couleur secondaire au survol */
+    transform: scale(1.05);
+}
+
+/* Summary of Selected Options */
+.selected-options-summary {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(
+        --background-color
+    ); /* Couleur de fond pour les résumés */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+.selected-options-summary h3 {
+    font-size: 1.8rem;
+    color: var(--text-color); /* Couleur du texte pour le titre */
+    margin-bottom: 15px;
+}
+
+.selected-options-summary ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.selected-options-summary li {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Form Fields */
+.form-field {
+    margin-bottom: 15px;
+}
+
+.form-field label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color); /* Couleur du texte pour les étiquettes */
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: var(
+        --primary-color
+    ); /* Couleur primaire pour la bordure en focus */
+    outline: none;
+}
+
+/* Error and Success Messages */
+.error-message {
+    color: var(--danger-color); /* Couleur des messages d'erreur */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: var(--primary-color); /* Couleur des messages de succès */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Button Accessibility */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsivity */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 0.95rem;
+        margin-top: 15px;
+    }
+
+    .selected-options-summary h3 {
+        font-size: 1.5rem;
+    }
+
+    .selected-options-summary li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    .selected-options-summary h3 {
+        font-size: 1.4rem;
+    }
+
+    .selected-options-summary li {
+        font-size: 0.9rem;
+    }
+    .category-selection {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 8px;
+    }
+
+    .title {
+        font-size: 1.6rem;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+        margin-top: 10px;
+    }
+
+    .selected-options-summary h3 {
+        font-size: 1.2rem;
+    }
+
+    .selected-options-summary li {
+        font-size: 0.8rem;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 260px) {
+    .container {
+        padding: 5px;
+    }
+
+    .title {
+        font-size: 1.4rem;
+    }
+
+    .btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+        margin-top: 8px;
+    }
+
+    .selected-options-summary h3 {
+        font-size: 1rem;
+    }
+
+    .selected-options-summary li {
+        font-size: 0.75rem;
+    }
+
+    .form-field input,
+    .form-field textarea {
+        padding: 6px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Styles pour la sélection de catégorie */
+.category-selection {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.category-btn {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-family-titles);
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color);
+    background-color: var(--primary-dark);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.category-btn:hover {
+    background-color: var(--button-hover-color);
+    color: var(--background-color);
+}
+
+.category-btn.selected {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-color: var(--accent-dark);
+}

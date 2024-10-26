@@ -1,0 +1,41 @@
+:root {
+    /* Couleurs principales */
+    --background-color: #180161; /* Couleur sombre pour le fond */
+    --primary-color: #4f1787; /* Couleur principale pour les éléments importants (liens, boutons) */
+    --accent-color: #eb3678; /* Couleur d'accentuation vive pour attirer l'attention */
+    --text-color: #f5f5f5; /* Couleur de texte claire pour contraster avec le fond sombre */
+    --button-hover-color: #eb0b5d; /* Couleur chaude pour l'effet de survol des boutons */
+    --danger-color: #e74c3c; /* Couleur pour les états de danger/erreur */
+    --danger-hover-color: #c0392b; /* Couleur de survol pour les boutons de danger */
+    --modal-background-color: rgba(
+        0,
+        0,
+        0,
+        0.8
+    ); /* Fond sombre pour les modals */
+
+    /* Palette complémentaire */
+    --primary-light: #7030b0; /* Variation plus claire de la couleur principale */
+    --primary-dark: #2a0a58; /* Version plus sombre de la couleur principale */
+    --accent-light: #f06292; /* Accent plus doux */
+    --accent-dark: #c2185b; /* Accent plus foncé pour créer du contraste */
+    --background-light: #2a136e; /* Teinte plus claire pour certaines sections */
+    --text-light: #ebebeb; /* Texte clair sur des fonds plus clairs */
+
+    /* Typographie */
+    --font-family-base: "Noto Sans", system-ui;
+    --font-family-titles: "Josefin Sans", sans-serif; /* Applying Josefin Sans for headings */
+    --font-size-base: 16px;
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+
+    /* Espacements */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Mise en page */
+    --container-max-width: 1200px;
+}

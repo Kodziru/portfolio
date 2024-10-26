@@ -1,0 +1,50 @@
+{
+    "title": "HAROLD",
+    "description": "Application web E-Commerce développée en collaboration avec le propriétaire d'un magasin. Un projet personnel en cours utilisant la méthode MVC et intégrant plusieurs API pour une expérience utilisateur enrichie.",
+    "imgSrc": "",
+    "whatWasDone": "Mise en place du système d'authentification, création du panier, système de code promos et parrainage avec récompenses, profil utilisateur, pages essentielles, et base de données complexes pour les produits, utilisateurs et commandes.",
+    "whatToDo": "Finaliser le routage des produits, compléter le panneau administrateur (80% terminé), connecter le site au système de paiement Stripe, effectuer des tests de commande et déployer le site en production.",
+    "technologies": ["React", "Firebase", "Stripe API", "Express.js"],
+    "progress": 80,
+    "features": [
+        { "feature": "Authentification", "status": "Complétée" },
+        { "feature": "Profil utilisateur", "status": "Complété" },
+        { "feature": "Code promos et parrainage", "status": "Complété" },
+        { "feature": "Routage des produits", "status": "En cours" },
+        { "feature": "Panneau administrateur", "status": "En cours" },
+        { "feature": "Suivi des commandes", "status": "À faire" },
+        { "feature": "Panier d'achat dynamique", "status": "Complété" },
+        {
+            "feature": "Système de notifications pour les mises à jour de commande",
+            "status": "À faire"
+        },
+        {
+            "feature": "Historique des achats et suivi des points de fidélité",
+            "status": "En cours"
+        },
+        {
+            "feature": "Système de recherche et filtres avancés pour les produits",
+            "status": "Complété"
+        },
+        {
+            "feature": "Intégration de Stripe pour les paiements sécurisés",
+            "status": "À faire"
+        },
+        {
+            "feature": "Gestion des retours et remboursements",
+            "status": "À planifier"
+        }
+    ],
+    "challenges": "La mise en place des codes promos et l'initialisation de la base de données complexe ont été des défis importants dans ce projet.",
+    "lessonsLearned": "L'importance de structurer une base de données complexe pour un e-commerce et la mise en œuvre efficace de systèmes de récompense et de codes promos pour engager les utilisateurs.",
+    "impact": "Cette application permet de gérer efficacement les commandes et de fidéliser les clients grâce aux systèmes de code promos et de parrainage.",
+    "teamMembers": ["Développeur principal"],
+    "launchDate": "2024-11-26",
+    "remainingTasks": [
+        "Compléter le routage des produits",
+        "Finaliser le panneau administrateur",
+        "Connecter Stripe et tester le système de paiement",
+        "Effectuer des tests de commande",
+        "Déploiement en production"
+    ]
+}

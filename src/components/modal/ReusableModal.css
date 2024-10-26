@@ -1,0 +1,289 @@
+@import "../../styles/variables.css";
+
+/* Overlay couvrant toute la page avec effet de flou */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    background-color: var(--modal-background-color); /* Utilise la variable */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
+}
+
+/* Après l'ouverture du modal */
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+/* Avant la fermeture du modal */
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+/* Contenu du modal */
+.custom-modal-content {
+    max-width: 800px;
+    width: 90%;
+    margin: auto;
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    background-color: var(--background-color); /* Couleur de fond du modal */
+    border: none;
+    position: relative;
+    font-family: var(--font-family-base);
+    color: var(--text-color);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    max-height: 80vh;
+    overflow-y: auto;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Après l'ouverture du contenu */
+.ReactModal__Content--after-open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Avant la fermeture du contenu */
+.ReactModal__Content--before-close {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/*----------------------------------------------*/
+/* Header du modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: var(--font-family-titles);
+    color: var(--accent-color);
+}
+
+.modal-close-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Séparateur */
+.modal-separator {
+    margin: var(--spacing-md) 0;
+    border: none;
+    height: 1px;
+    background-color: var(--primary-dark);
+}
+
+/* Image du projet */
+.modal-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Section titre */
+.modal-section-title {
+    font-size: 1.5rem;
+    color: var(--primary-light);
+    margin-bottom: var(--spacing-sm);
+    font-family: var(--font-family-titles);
+}
+
+/* Description */
+.modal-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Barre de progression */
+.modal-progress-bar-background {
+    background-color: var(--background-light);
+    border-radius: 8px;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
+}
+
+.modal-progress-bar {
+    background-color: var(--accent-color);
+    height: 100%;
+    border-radius: 8px;
+}
+
+.modal-progress-percentage {
+    font-size: 1rem;
+    margin-top: var(--spacing-sm);
+    color: var(--text-light);
+}
+
+/* Table des fonctionnalités */
+.modal-features-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-features-table th,
+.modal-features-table td {
+    padding: var(--spacing-xs);
+    border: 1px solid var(--primary-dark);
+    color: var(--text-color);
+}
+
+.modal-features-table th {
+    background-color: var(--primary-dark);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Liste des technologies */
+.modal-list {
+    list-style-type: disc;
+    padding-left: var(--spacing-md);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Pied de page du modal */
+.modal-footer {
+    margin-top: var(--spacing-lg);
+    text-align: center;
+}
+
+.modal-close-button-footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.modal-close-button-footer:hover {
+    background-color: var(--button-hover-color);
+}
+
+/* Liste des membres de l'équipe */
+.modal-team-members-list {
+    list-style-type: circle;
+    padding-left: var(--spacing-md);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-team-members-list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Styles supplémentaires */
+.modal-progress-bar-background,
+.modal-features-table th,
+.modal-features-table td {
+    background-color: var(--background-light);
+}
+
+.modal-progress-bar {
+    background-image: linear-gradient(
+        to right,
+        var(--accent-light),
+        var(--accent-dark)
+    );
+}
+
+.modal-close-button,
+.modal-close-button-footer {
+    font-family: var(--font-family-base);
+}
+
+.modal-close-button:hover {
+    color: var(--accent-light);
+}
+
+/* File upload button styling */
+.form-file-upload {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover effect */
+.form-file-upload:hover {
+    background-color: var(--button-hover-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Hidden file input */
+.form-file-upload input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/* Label text for file upload */
+.form-file-label {
+    display: inline-block;
+    pointer-events: none;
+}
+
+/* Optional loading animation for file upload */
+.file-loading {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-left-color: var(--text-color);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

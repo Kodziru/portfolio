@@ -1,0 +1,45 @@
+{
+    "title": "Projet Personnel - Assistant de Mission Quotidienne",
+    "description": "Application mobile IA qui attribue des missions quotidiennes pour aider l'utilisateur à atteindre ses objectifs de développement personnel et ses besoins spécifiques. Elle offre des conseils et des défis adaptés pour progresser dans divers domaines de vie.",
+    "imgSrc": "",
+    "whatWasDone": "Développement de l'interface utilisateur avec React Native, intégration d'une IA basée sur plusieurs modèles GPT pour analyser les besoins des utilisateurs en fonction des types de mission, mise en place d'une base de données complexe dans Firebase pour suivre les objectifs et stocker les données, ainsi qu'un système de gestion de profil et de connexion sécurisé.",
+    "whatToDo": "Établir une communication entre les utilisateurs pour partager leurs missions, lancer des défis ou inviter d'autres personnes à participer. Améliorer l'interaction entre les données utilisateurs et l'IA pour fournir des missions personnalisées et adaptées aux besoins en temps réel.",
+    "futureGoals": "Ajouter une communication entre utilisateurs pour des missions collaboratives, intégrer plusieurs modèles GPT spécialisés pour affiner l'assistance selon les types de mission, et offrir une personnalisation avancée pour un suivi optimal des objectifs de chaque utilisateur.",
+    "technologies": [
+        "React Native",
+        "Node.js",
+        "OpenAI API",
+        "TensorFlow",
+        "Redux",
+        "Stripe API",
+        "Firebase Cloud",
+        "Firebase Storage"
+    ],
+    "progress": 30,
+    "features": [
+        {
+            "feature": "Analyse des besoins utilisateur via IA avec GPT",
+            "status": "Complétée"
+        },
+        {
+            "feature": "Intégration des notifications push",
+            "status": "En cours"
+        },
+        { "feature": "Système de paiement sécurisé", "status": "À faire" },
+        { "feature": "Tableau de bord utilisateur", "status": "Complété" },
+        {
+            "feature": "Système de connexion sécurisé et gestion de profil",
+            "status": "Complété"
+        }
+    ],
+    "challenges": "La principale difficulté a été d'architecturer la base de données pour garantir une bonne gestion des données utilisateurs et optimiser l'interaction avec l'IA sans ralentir les performances, notamment pour les utilisateurs avec des besoins variés et complexes.",
+    "lessonsLearned": "L'importance d'une bonne gestion de la base de données et d'une architecture optimisée pour gérer efficacement des données volumineuses et complexes. Cette expérience a également renforcé les connaissances en optimisation pour une expérience utilisateur fluide.",
+    "impact": "Cette application encourage le développement personnel en fournissant des missions sur mesure, augmentant la motivation et facilitant la croissance personnelle avec des défis quotidiens. Le futur système de recommandations IA basé sur plusieurs GPT permettra de cibler encore plus précisément les besoins de chaque utilisateur.",
+    "teamMembers": ["Emi"],
+    "launchDate": "2025-12-01",
+    "remainingTasks": [
+        "Établir la communication entre utilisateurs pour missions partagées et défis",
+        "Améliorer l'intégration IA avec des données utilisateur",
+        "Optimiser les performances IA pour une meilleure réactivité"
+    ]
+}

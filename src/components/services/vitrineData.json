@@ -1,0 +1,115 @@
+{
+    "cmsOptions": [
+        {
+            "name": "Installation et configuration CMS",
+            "cost": "300 € - 800 €",
+            "important": true,
+            "about": "Mise en place initiale du CMS pour gérer le contenu de manière autonome."
+        },
+        {
+            "name": "Cahier des charges",
+            "cost": "50 € - 200 €",
+            "important": true,
+            "about": "Définition des besoins et objectifs du site pour guider le développement."
+        },
+        {
+            "name": "SEO de base",
+            "cost": "150 € - 400 €",
+            "important": false,
+            "about": "Optimisation de base pour améliorer le classement dans les moteurs de recherche."
+        },
+        {
+            "name": "Maintenance CMS",
+            "cost": "50 € - 150 € par mois",
+            "important": false,
+            "about": "Support technique continu et mises à jour pour le CMS."
+        },
+        {
+            "name": "Personnalisation du thème",
+            "cost": "150 € - 400 €",
+            "important": false,
+            "about": "Adaptation du thème pour correspondre à l'image de marque du client."
+        },
+        {
+            "name": "Intégration de plugins",
+            "cost": "100 € - 300 €",
+            "important": false,
+            "about": "Ajout de fonctionnalités supplémentaires via des plugins."
+        },
+        {
+            "name": "Création de contenu initial",
+            "cost": "200 € - 500 €",
+            "important": false,
+            "about": "Création de texte et images pour le lancement initial du site."
+        },
+        {
+            "name": "Formation utilisateur CMS",
+            "cost": "100 € - 300 €",
+            "important": false,
+            "about": "Formation pour apprendre à utiliser les fonctionnalités du CMS."
+        },
+        {
+            "name": "Support client pour les questions techniques",
+            "cost": "50 € - 150 € par mois",
+            "important": false,
+            "about": "Assistance pour résoudre les problèmes techniques liés au CMS."
+        },
+        {
+            "name": "Intégration des réseaux sociaux",
+            "cost": "100 € - 200 €",
+            "important": false,
+            "about": "Connecter le CMS avec des plateformes de réseaux sociaux pour le partage de contenu."
+        },
+        {
+            "name": "Migration de contenu",
+            "cost": "200 € - 600 €",
+            "important": false,
+            "about": "Transfert de contenu existant vers le nouveau CMS."
+        },
+        {
+            "name": "Sauvegardes automatisées",
+            "cost": "50 € - 100 € par mois",
+            "important": false,
+            "about": "Configuration de sauvegardes automatiques pour la sécurité des données."
+        }
+    ],
+    "customDevelopmentOptions": [
+        {
+            "name": "Cahier des charges",
+            "cost": "50 € - 200 €",
+            "important": true,
+            "about": "Définition des besoins et objectifs du site pour guider le développement."
+        },
+        {
+            "name": "Développement frontend",
+            "cost": "200 € - 1000 €",
+            "important": true,
+            "about": "Développement de l'interface visible pour les visiteurs du site."
+        },
+        {
+            "name": "Conception graphique (UI/UX)",
+            "cost": "300 € - 1000 €",
+            "important": false,
+            "about": "Conception de l'interface utilisateur pour une expérience optimisée."
+        },
+        {
+            "name": "Développement backend",
+            "cost": "400 € - 2200 €",
+            "important": false,
+            "about": "Création du serveur, de la base de données et de la logique métier."
+        },
+
+        {
+            "name": "Hébergement et configuration de domaine",
+            "cost": "100 € - 200 €",
+            "important": false,
+            "about": "Réservation du nom de domaine et configuration de l'hébergement."
+        },
+        {
+            "name": "Sécurisation du site (certificat SSL)",
+            "cost": "50 € - 150 €",
+            "important": false,
+            "about": "Installation d'un certificat SSL pour sécuriser les données des visiteurs."
+        }
+    ]
+}

@@ -1,0 +1,351 @@
+/* contact.css */
+@import "./contact.css";
+/* Container */
+.contact-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+    background-color: var(--background-color);
+    min-height: 100vh;
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+/* Main form styling */
+.contact-form {
+    margin-top: 36px;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px); /* Effet de flou */
+    -webkit-backdrop-filter: blur(10px); /* Compatibilité pour Safari */
+    padding: var(--spacing-lg);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    margin: auto;
+    font-family: var(--font-family-base);
+    margin-top: 22px;
+}
+
+.contact-form h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-bold);
+    font-family: var(--font-family-titles);
+}
+
+/* Form group */
+.form-group {
+    margin-bottom: var(--spacing-md);
+    position: relative;
+}
+
+.form-group label {
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-bold);
+    font-size: 1rem;
+    color: var(--primary-light);
+    display: flex;
+    justify-content: start;
+}
+
+.form-group textarea,
+.form-group input,
+.form-group select {
+    background-color: var(--primary-color);
+}
+
+/* Info icon for explanations */
+.info-icon {
+    margin-left: var(--spacing-xs);
+    font-size: 1rem;
+    color: var(--accent-light);
+    cursor: pointer;
+    display: flex;
+}
+
+/* Inputs, textarea, select, and file inputs */
+.form-input,
+.form-textarea,
+.form-select,
+.form-file {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--primary-dark);
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    box-sizing: border-box;
+    background-color: tra;
+    color: var(--text-light);
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: var(--accent-color);
+    background-color: var(--background-light);
+    outline: none;
+}
+
+.form-textarea {
+    min-height: 150px;
+    resize: none;
+    overflow: hidden;
+}
+
+/* Auto-expansion of textarea */
+.form-textarea.auto-expand {
+    height: auto;
+    transition: height 0.2s ease;
+}
+
+/* Submit button */
+.submit-btn,
+.remove-file-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-sm);
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--button-hover-color);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:disabled {
+    background-color: var(--danger-color);
+    cursor: not-allowed;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--accent-color);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Message (success or error) */
+.form-message {
+    margin-top: var(--spacing-sm);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.form-message.success {
+    color: var(--accent-light);
+}
+
+.form-message.error {
+    color: var(--danger-color);
+}
+
+/* Tooltip container */
+.icon-with-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip {
+    visibility: hidden;
+    background-color: var(--background-light);
+    color: var(--text-light);
+    text-align: center;
+    border-radius: 6px;
+    padding: var(--spacing-xs);
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 65%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.875rem;
+    width: 180px;
+}
+
+.icon-with-tooltip:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon-with-tooltip .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--background-light) transparent transparent transparent;
+}
+/* Checkbox group styling */
+.form-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    font-family: var(--font-family-base);
+    color: var(--text-color);
+}
+
+/* Individual checkbox option styling */
+.form-checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+/* Custom checkbox styling */
+.form-checkbox-option input[type="checkbox"] {
+    appearance: none; /* Remove default checkbox styling */
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--accent-color);
+    border-radius: 4px; /* Square shape with rounded corners */
+    background-color: transparent;
+    position: relative;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Checked state styling for custom checkbox */
+.form-checkbox-option input[type="checkbox"]:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-dark);
+}
+
+/* Inner checkmark for checked state */
+.form-checkbox-option input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 10px;
+    border: solid var(--background-color);
+    border-width: 0 2px 2px 0;
+    top: 2px;
+    left: 6px;
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* uplod container */
+.uploaded-files {
+    background-color: #3b2972;
+    border-radius: 8px;
+    padding: 24px;
+}
+.uploaded-file-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.remove-file-button {
+    width: 100px;
+    height: 28px;
+}
+/* Show checkmark when checked */
+.form-checkbox-option input[type="checkbox"]:checked::before {
+    opacity: 1;
+}
+
+/* Label styling */
+.form-checkbox-option label {
+    cursor: pointer;
+    font-size: var(--font-size-base);
+    color: var(--primary-light);
+}
+
+.form-label {
+    display: flex;
+    gap: 8px;
+}
+/* Small devices (mobile) */
+@media (max-width: 576px) {
+    .contact-form-container {
+        padding: var(--spacing-sm);
+    }
+
+    .contact-form {
+        padding: var(--spacing-md);
+        max-width: 100%;
+        box-shadow: none;
+    }
+
+    .contact-form h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select,
+    .form-file {
+        padding: var(--spacing-xs);
+        font-size: 0.875rem;
+    }
+
+    .submit-btn {
+        font-size: 1rem;
+        padding: var(--spacing-xs);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* Medium devices (tablets) */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: var(--spacing-lg);
+    }
+
+    .contact-form h2 {
+        font-size: 1.625rem;
+    }
+}
+
+/* Large devices (desktops and up) */
+@media (min-width: 992px) {
+    .contact-form {
+        max-width: 700px;
+        padding: var(--spacing-xl);
+    }
+
+    .contact-form h2 {
+        font-size: 1.875rem;
+    }
+}
