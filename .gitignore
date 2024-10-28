@@ -1,41 +1,120 @@
-# Dépendances
-/node_modules
-/.pnp
-.pnp.js
+# Node.js #
 
-# Dossiers de sauvegarde et archives
-/project-backup-*.zip
+# Dossiers de dépendances
+node_modules/
+jspm_packages/
 
-# Tests et couverture
-/coverage
-/setupTests.js
+# Fichiers de logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
 
-# Production et build
-/build
-/public/robots.txt
-
-# Cache, logs et fichiers temporaires
-.cache/
-.DS_Store
+# Variables d'environnement et configurations sensibles
 .env
+.env.*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Fichiers et dossiers de configuration sensibles
-/config/firebaseConfig.js
+# Fichiers de build
+build/
+dist/
+temp/
+tmp/
+out/
 
-# Utilitaires et scripts de reporting
-/reportWebVitals.js
-/utils/resizeObserver.js
+# Couverture de tests
+coverage/
 
-# Fichiers CSS générés et sources map
-*.css.map
-*.js.map
+# Cache
+.cache/
+.next/
+.nuxt/
+.svelte-kit/
+
+# Dossiers spécifiques aux éditeurs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Fichiers système Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbs.db
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Système Linux
+*~
+
+# Système Windows
+$RECYCLE.BIN/
+
+# Fichiers de configuration personnels
+*.iml
+*.ipr
+*.iws
+
+# Fichiers de gestionnaires de paquets
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Dossiers de backend sensibles
+backend/*.key
+backend/*.pem
+backend/*.crt
+
+# Clés SSH ou certificats
+*.pem
+*.cer
+*.crt
+*.key
+
+# Images et assets générés
+public/assets/
+src/assets/generated/
+
+# Fichiers de test
+*.test.js
+*.spec.js
+*.test.jsx
+*.spec.jsx
 
 # Fichiers temporaires
-Thumbs.db
+*.tmp
+*.temp
+*.swp
+*.swo
+*.bak
+
+# Fichiers de transpilation
+*.tsbuildinfo
+
+# Configurations locales
+.local/
+.envrc
+
+# Exclure les configurations Firebase si elles contiennent des clés
+src/config/firebaseConfig.js
+
+# Exclure les données sensibles dans les fichiers JSON
+data/*.json
+
+# Ne pas commiter les fichiers ZIP ou archives
+*.zip
+*.tar.gz
+*.rar
+
+# Ne pas commiter les exécutables ou binaires
+*.exe
+*.dll
+*.so
+*.dylib

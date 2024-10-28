@@ -1,0 +1,16 @@
+# Bloquer les crawlers sur des dossiers spécifiques contenant des fichiers de configuration et de backend
+User-agent: *
+Disallow: /backend/
+Disallow: /src/
+Disallow: /public/
+Disallow: /build/asset-manifest.json
+Disallow: /build/static/css/*.map
+Disallow: /build/static/js/*.map
+
+# Autoriser l'accès aux pages principales et au dossier static (pour les images, CSS, JS minifiés)
+Allow: /build/
+Allow: /build/index.html
+Allow: /build/static/
+
+# Sitemap (à ajouter si vous avez un fichier sitemap généré)
+Sitemap: https://emiservice.fr/sitemap.xml
