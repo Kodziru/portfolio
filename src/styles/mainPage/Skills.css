@@ -1,12 +1,4 @@
-/* Import des variables */
-@import "../../styles/variables.css";
-
 /* Désactive la sélection de texte et l'effet bleu de sélection */
-* {
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-tap-highlight-color: transparent;
-}
 
 /* Animation d'entrée pour la section skills-section */
 .skills-section {
@@ -62,14 +54,14 @@
     cursor: pointer;
     border: 1px solid transparent;
     outline: none;
-    transition: transform 0.3s ease, box-shadow 0.4s ease,
-        background-color 0.4s ease, opacity 0.4s ease,
-        max-height 0.5s ease-in-out;
+    transition: all 0.3s ease, box-shadow 0.4s ease, background-color 0.4s ease,
+        opacity 0.4s ease, max-height 0.5s ease-in-out;
     height: auto; /* Laisser une hauteur dynamique */
     flex-grow: 1; /* Chaque élément peut prendre l'espace nécessaire */
     max-height: 150px; /* Limite initiale pour les éléments normaux */
     overflow: hidden; /* Masquer tout dépassement de contenu */
 }
+
 /* Amélioration de l'effet de survol */
 @media (hover: hover) {
     .skill-item:hover,
@@ -95,7 +87,8 @@
 .skill-item:hover .icon,
 .skill-item:active .icon {
     color: white;
-    transition: color 0.3s ease, transform 0.6s ease;
+
+    transition: color 0.3s ease, transform 0.9s ease;
 }
 
 .skill-item:hover span,
@@ -114,7 +107,7 @@
         var(--secondary-color),
         var(--accent-color)
     );
-    -webkit-background-clip: text;
+
     -webkit-text-fill-color: transparent;
 }
 
@@ -124,7 +117,7 @@
     margin-top: 10px;
     font-size: 1.1rem;
     font-weight: 500;
-    color: #9b7ddd;
+    color: var(--text-light);
 }
 
 /* Locked state styles */
@@ -132,6 +125,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 12px;
     align-items: center;
     max-width: 420px;
     padding: 25px;
@@ -149,11 +143,22 @@
 .skill-item.locked * {
     color: white;
 }
+/* CSS Skills.css */
+.skill-item .skill-details {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+}
+
+.skill-item.locked .skill-details {
+    opacity: 1;
+    max-height: 500px; /* Valeur arbitraire suffisamment grande pour contenir le contenu */
+}
 
 /* Positionnement de l'icône dans le mode verrouillé */
 .skill-item.locked .icon-container {
-    margin-right: 20px;
-    font-size: 3.2rem;
+    font-size: 8.2rem;
     display: flex;
     justify-content: center;
 }
@@ -165,11 +170,41 @@
 .skill-item.locked span {
     display: none;
 }
+
 .skill-item.locked .skill-text p {
     margin: 0;
     font-size: 0.95rem;
     white-space: pre-wrap;
 }
+@-webkit-keyframes scale-up-ver-top {
+    0% {
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        -webkit-transform-origin: 100% 0%;
+        transform-origin: 100% 0%;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        -webkit-transform-origin: 100% 0%;
+        transform-origin: 100% 0%;
+    }
+}
+@keyframes scale-up-ver-top {
+    0% {
+        -webkit-transform: scaleY(0.4);
+        transform: scaleY(0.4);
+        -webkit-transform-origin: 100% 0%;
+        transform-origin: 100% 0%;
+    }
+    100% {
+        -webkit-transform: scaleY(1);
+        transform: scaleY(1);
+        -webkit-transform-origin: 100% 0%;
+        transform-origin: 100% 0%;
+    }
+}
+
 .explore-section-title {
     font-size: 2rem;
     text-align: center;

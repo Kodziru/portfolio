@@ -4,7 +4,6 @@
     padding: 15px 20px;
     position: relative;
     z-index: 1000;
-    margin-top: 10px;
 }
 
 .header-container {
@@ -138,6 +137,15 @@
     body.nav-open {
         overflow: hidden;
         height: 100vh;
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     }
 }
 

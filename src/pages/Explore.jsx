@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import ReusableModal from "../components/modal/ReusableModal";
 import ProgressBar from "../components/explore/ProgressBar";
 import Skills from "../components/explore/Skills";
-import ExploreContainer from "../components/explore/SectionAbout.js";
+import ExploreContainer from "../components/explore/SectionAbout.jsx";
+import Projects from "../components/explore/projects";
 
 const Explore = () => {
     const [activeSection, setActiveSection] = useState(0);
@@ -51,12 +52,10 @@ const Explore = () => {
             return;
         }
 
-        setLoading(true);
+        setModalOpen(true);
         try {
             const projectModule = await import(`../data/${projectPath}.json`);
-            const projectData = projectModule.default; // Accédez à la propriété 'default'
-
-            console.log("Données du projet chargées :", projectData); // Log pour vérifier les données
+            const projectData = projectModule.default;
 
             setModalContent({
                 title: projectData.title || "",
@@ -72,15 +71,10 @@ const Explore = () => {
                 teamMembers: projectData.teamMembers || [],
                 launchDate: projectData.launchDate || "",
             });
-
-            setModalOpen(true);
         } catch (error) {
             console.error("Erreur de chargement du projet:", error);
-        } finally {
-            setLoading(false);
         }
     };
-
     const closeModal = () => setModalOpen(false);
 
     useEffect(() => {
@@ -109,130 +103,33 @@ const Explore = () => {
         };
     }, []);
 
-    const sectionVariants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    };
-
     return (
         <div className="explore-main">
             <div>
                 {/* Section About */}
-                <motion.section
+                <section
                     className="explore-extern-section"
                     ref={(el) => setSectionRef(el, 0)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={sectionVariants}
                 >
                     <ExploreContainer />
-                </motion.section>
+                </section>
 
                 {/* Section Skills */}
-                <motion.section
+                <section
                     className="explore-extern-section"
                     ref={(el) => setSectionRef(el, 1)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={sectionVariants}
                 >
                     <h3 className="explore-section-title">Mes compétences</h3>
                     <Skills />
-                </motion.section>
+                </section>
 
                 {/* Section Projects */}
-                <motion.section
+                <section
                     className="explore-extern-section"
                     ref={(el) => setSectionRef(el, 2)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    variants={sectionVariants}
                 >
-                    <h3 className="explore-section-title">Mes projets</h3>
-                    <div className="explore-projects-container">
-                        {/* Project 1 */}
-                        <motion.div
-                            className="explore-container explore-project"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            variants={sectionVariants}
-                        >
-                            <h4 className="explore-project-title">Next Step</h4>
-                            <ProgressBar
-                                backgroundProgress={70}
-                                foregroundProgress={30}
-                                backgroundColor="#DC3545"
-                                foregroundGradient="#3795BD"
-                                backgroundStatus="V. alpha"
-                                foregroundStatus="En cours"
-                            />
-                            <p>
-                                L'application mobile fonctionnelle avec une IA
-                            </p>
-                            <button
-                                className="btn-section-modal"
-                                type="button"
-                                onClick={() => openModal("project1")}
-                            >
-                                Informations
-                            </button>
-                        </motion.div>
-
-                        {/* Project 2 */}
-                        <motion.div
-                            className="explore-container explore-project"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            variants={sectionVariants}
-                        >
-                            <h4 className="explore-project-title">Clim Time</h4>
-                            <ProgressBar
-                                foregroundProgress={100}
-                                foregroundGradient="#ff4800"
-                                foregroundStatus="Ready"
-                                showBackgroundStatus={false}
-                            />
-                            <p>Site vitrine sur commande</p>
-                            <button
-                                className="btn-section-modal"
-                                type="button"
-                                onClick={() => openModal("project2")}
-                            >
-                                Informations
-                            </button>
-                        </motion.div>
-
-                        {/* Project 3 */}
-                        <motion.div
-                            className="explore-container explore-project"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.3 }}
-                            variants={sectionVariants}
-                        >
-                            <h4 className="explore-project-title">HAROLD</h4>
-                            <ProgressBar
-                                showBackgroundStatus={false}
-                                foregroundProgress={80}
-                                foregroundGradient="#ff4800"
-                                foregroundStatus="En cours"
-                            />
-                            <p>Web application E-Commerce</p>
-                            <button
-                                className="btn-section-modal"
-                                type="button"
-                                onClick={() => openModal("project3")}
-                            >
-                                Informations
-                            </button>
-                        </motion.div>
-                    </div>
-                </motion.section>
+                    <Projects openModal={openModal} />
+                </section>
             </div>
 
             <ReusableModal

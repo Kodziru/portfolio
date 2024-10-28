@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
-import "../../styles/variables.css"; // Import des variables de style
+import "../../styles/variables.css";
 
 // Styled components
 const ProgressBarWrapper = styled.div`
@@ -64,7 +64,7 @@ const StatusBubble = styled.div`
     opacity: ${(props) => (props["data-is-visible"] ? 1 : 0)};
     transform: ${(props) =>
         props["data-is-visible"]
-            ? "translateX(-50%)"
+            ? "translateX(-60%)"
             : "translate(-50%, -30px)"};
 `;
 

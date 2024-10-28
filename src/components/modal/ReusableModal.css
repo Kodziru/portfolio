@@ -38,7 +38,7 @@
     background-color: var(--background-color); /* Couleur de fond du modal */
     border: none;
     position: relative;
-    font-family: var(--font-family-base);
+
     color: var(--text-color);
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     z-index: 2;
@@ -69,10 +69,18 @@
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .modal-close-button {
+        min-width: 35px;
+    }
+    .modal-title {
+        font-size: 1.6rem;
+    }
+}
+
 .modal-title {
     margin: 0;
-    font-size: 1.8rem;
-    font-family: var(--font-family-titles);
+
     color: var(--accent-color);
 }
 
@@ -104,7 +112,6 @@
     font-size: 1.5rem;
     color: var(--primary-light);
     margin-bottom: var(--spacing-sm);
-    font-family: var(--font-family-titles);
 }
 
 /* Description */
@@ -217,7 +224,6 @@
 
 .modal-close-button,
 .modal-close-button-footer {
-    font-family: var(--font-family-base);
 }
 
 .modal-close-button:hover {

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import SecureInput from "./SecureInput";
 import "../styles/contact.css";
+
 import { FaInfoCircle } from "react-icons/fa";
 
 const Tooltip = ({ message }) => <span className="tooltip">{message}</span>;
@@ -9,7 +10,7 @@ const ContactForm = ({
     selectedOptions = [],
     serviceType = "Service",
     options = [],
-    submitUrl = "http://localhost:5000/send-email-service",
+    submitUrl = "https://emiservice.fr/send-email-service.php",
     successMessage = "Votre message a été envoyé avec succès !",
     errorMessage = "Erreur lors de l'envoi de l'e-mail.",
 }) => {
@@ -20,9 +21,12 @@ const ContactForm = ({
     const [formData, setFormData] = useState({
         name: "",
         email: "",
+        phone: "", // Ajout du champ pour le numéro de téléphone
         message: "",
     });
+    const [contactPermission, setContactPermission] = useState(false); // État pour la case à cocher
 
+    // Fonction pour calculer l'estimation des coûts
     const calculatePriceRange = () => {
         let minTotal = 0;
         let maxTotal = 0;
@@ -57,30 +61,44 @@ const ContactForm = ({
 
         const priceRange = `${minTotal} € - ${maxTotal} €`;
 
-        const dataToSend = {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            serviceType,
-            selectedOptions,
-            priceRange,
-        };
+        // Préparation des données du formulaire
+        const formDataToSend = new FormData();
+        formDataToSend.append("name", formData.name);
+        formDataToSend.append("email", formData.email);
+        formDataToSend.append("phone", formData.phone);
+        formDataToSend.append("message", formData.message);
+        formDataToSend.append("serviceType", serviceType);
+        formDataToSend.append(
+            "selectedOptions",
+            JSON.stringify(selectedOptions)
+        );
+        formDataToSend.append("priceRange", priceRange);
+        formDataToSend.append(
+            "contactPermission",
+            contactPermission ? "Oui" : "Non"
+        ); // Ajouter la permission de contact
 
         try {
             const response = await fetch(submitUrl, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(dataToSend),
+                body: formDataToSend,
             });
 
+            const text = await response.text();
+            let result;
+            try {
+                result = text ? JSON.parse(text) : {};
+            } catch (error) {
+                throw new Error("Réponse du serveur non valide");
+            }
+
             if (response.ok) {
-                setFormMessage(successMessage);
+                setFormMessage(result.message || successMessage);
                 setIsSuccess(true);
-                setFormData({ name: "", email: "", message: "" });
+                setFormData({ name: "", email: "", phone: "", message: "" });
+                setContactPermission(false); // Réinitialiser la case à cocher
             } else {
-                setFormMessage(errorMessage);
+                setFormMessage(result.message || errorMessage);
                 setIsSuccess(false);
             }
         } catch (error) {
@@ -101,7 +119,6 @@ const ContactForm = ({
                 aria-label="Formulaire de contact"
             >
                 <div className="form-group">
-                    <label htmlFor="name" className="form-label"></label>
                     <SecureInput
                         label="Nom"
                         type="text"
@@ -113,7 +130,6 @@ const ContactForm = ({
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="email" className="form-label"></label>
                     <SecureInput
                         label="Email"
                         type="email"
@@ -125,7 +141,18 @@ const ContactForm = ({
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="message" className="form-label">
+                    <SecureInput
+                        label="Numéro"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange("phone")}
+                        required
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="message" className="form-label label-ico">
                         Message{" "}
                         <span className="icon-with-tooltip">
                             <FaInfoCircle className="info-icon" />
@@ -142,6 +169,30 @@ const ContactForm = ({
                         }
                         required
                     />
+                </div>
+
+                <div className="form-group">
+                    <label
+                        htmlFor="contactPermission"
+                        className="form-checkbox"
+                    >
+                        <input
+                            type="checkbox"
+                            id="contactPermission"
+                            className="custom-checkbox"
+                            style={{ marginRight: "7px" }}
+                            name="contactPermission"
+                            checked={contactPermission}
+                            onChange={(e) =>
+                                setContactPermission(e.target.checked)
+                            }
+                        />
+
+                        <span>
+                            Je souhaite être contacté(e) pour des informations
+                            supplémentaires
+                        </span>
+                    </label>
                 </div>
 
                 {formMessage && (

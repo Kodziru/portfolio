@@ -195,7 +195,10 @@ const Vitrine = () => {
                     selectedOptions={selectedOptions}
                     serviceType={category}
                     options={options}
-                    submitUrl="http://localhost:5000/send-email-service"
+                    submitUrl={
+                        process.env.REACT_APP_SUBMIT_URL ||
+                        "https://emiservice.fr/send-email-service.php"
+                    } // Utilisation d'une URL dynamique
                     successMessage="Votre message a été envoyé avec succès !"
                     errorMessage="Erreur lors de l'envoi du message."
                 />

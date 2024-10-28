@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../styles/services/common.css"; //
-import "../styles/Styles.css"; //
-import Vitrine from "../components/services/Vitrine.js"; // Importer la section "Vitrine"
-import Ecommerce from "../components/services/Ecommerce.js"; // Importer la section "Ecommerce"
-import Maintenance from "../components/services/Maintenance.js"; // Importer la section "Maintenance"
-import Testimonials from "../components/reviews/Testimonials.js"; // Importer la section des avis
-import TestimonialsColumn from "../components/reviews/ReviewList.js"; // Importer la nouvelle section TestimonialsColumn
+import "../styles/services/common.css";
+import "../styles/Styles.css";
+import Vitrine from "../components/services/Vitrine"; // Importer la section "Vitrine"
+import Ecommerce from "../components/services/Ecommerce.jsx"; // Importer la section "Ecommerce"
+import Maintenance from "../components/services/Maintenance.jsx"; // Importer la section "Maintenance"
+import Testimonials from "../components/reviews/Testimonials.jsx"; // Importer la section des avis
+import TestimonialsColumn from "../components/reviews/ReviewList.jsx"; // Importer la nouvelle section TestimonialsColumn
 import { motion, AnimatePresence } from "framer-motion";
 
 // Définition des variantes d'animation pour chaque section

@@ -1,11 +1,12 @@
 /* Styles pour le composant ExploreContainer */
+
 .explore-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: var(--container-max-width);
-    margin: var(--spacing-lg) auto;
+    margin: 0 auto;
     padding: var(--spacing-md);
     background-color: rgba(
         255,
@@ -29,7 +30,6 @@
 }
 
 .explore-title {
-    font-family: var(--font-family-titles);
     font-size: 2rem;
     color: var(--text-light);
     margin-bottom: var(--spacing-sm);
@@ -57,6 +57,7 @@
 .img-profile {
     width: 100%;
     max-width: 600px;
+    height: auto;
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     object-fit: cover;
@@ -95,7 +96,6 @@
 }
 
 .explore-section-title {
-    font-family: var(--font-family-titles);
     font-size: 2rem;
     color: var(--text-color);
     text-align: center;
@@ -104,7 +104,7 @@
 
 .explore-projects-container {
     display: flex;
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     gap: var(--spacing-md);
 }
@@ -116,11 +116,11 @@
     padding: var(--spacing-md);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .explore-project:hover {
-    transform: scale(1.02);
+    background-color: var(--primary-color);
 }
 
 .explore-project-title {

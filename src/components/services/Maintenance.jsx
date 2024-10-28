@@ -127,7 +127,10 @@ const Maintenance = () => {
                             selectedOptions={selectedOptions}
                             serviceType="Maintenance"
                             options={options}
-                            submitUrl="http://localhost:5000/send-email-service"
+                            submitUrl={
+                                process.env.REACT_APP_SUBMIT_URL ||
+                                "https://emiservice.fr/send-email-service.php"
+                            } // Utilise une URL dynamique
                             successMessage="Votre demande de maintenance a été envoyée avec succès !"
                             errorMessage="Erreur lors de l'envoi de la demande de maintenance."
                         />

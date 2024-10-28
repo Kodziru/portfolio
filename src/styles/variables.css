@@ -24,7 +24,7 @@
 
     /* Typographie */
     --font-family-base: "Noto Sans", system-ui;
-    --font-family-titles: "Josefin Sans", sans-serif; /* Applying Josefin Sans for headings */
+    --font-family-titles: "Josefin Sans", sans-serif;
     --font-size-base: 16px;
     --font-weight-normal: 400;
     --font-weight-bold: 700;

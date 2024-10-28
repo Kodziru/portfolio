@@ -132,7 +132,6 @@ const CheckboxInput = ({ label, name, checked, onChange, required }) => (
         </label>
     </div>
 );
-
 const ContactForm = () => {
     const [formData, setFormData] = useState({
         contactPreferences: [],
@@ -202,6 +201,7 @@ const ContactForm = () => {
             files,
         }));
     };
+
     const handleRemoveFile = (index) => {
         setFormData((prevData) => {
             const updatedFiles = prevData.files.filter((_, i) => i !== index);
@@ -226,24 +226,20 @@ const ContactForm = () => {
 
         setLoading(true);
 
+        // Préparation des données à envoyer
         const dataToSend = new FormData();
         dataToSend.append("fullName", formData.fullName);
         dataToSend.append("email", formData.email);
-        dataToSend.append("subject", formData.subject || formData.otherSubject);
+        dataToSend.append("subject", formData.subject);
         dataToSend.append("message", formData.message);
         dataToSend.append(
             "contactPreference",
             formData.contactPreferences.join(", ")
         );
 
-        // Ajouter tous les fichiers à dataToSend
-        formData.files.forEach((file, index) => {
-            dataToSend.append(`file_${index}`, file);
-        });
-
         try {
             const response = await fetch(
-                "http://localhost:5000/send-email-contact",
+                "https://emiservice.fr/send-email-contact.php", // URL PHP sur Hostinger
                 {
                     method: "POST",
                     body: dataToSend,
@@ -258,7 +254,6 @@ const ContactForm = () => {
                     fullName: "",
                     email: "",
                     subject: "",
-                    otherSubject: "",
                     message: "",
                     acceptPolicy: false,
                     files: [],
@@ -276,7 +271,6 @@ const ContactForm = () => {
             setSubmitted(true);
         }
     };
-
     return (
         <form onSubmit={handleSubmit} className="contact-form">
             <TextInput
@@ -384,6 +378,15 @@ const ContactForm = () => {
             <button type="submit" className="submit-btn" disabled={loading}>
                 {loading ? "Envoi en cours..." : "Envoyer"}
             </button>
+            {formMessage && (
+                <p
+                    className={`form-message ${
+                        isSuccess ? "success" : "error"
+                    }`}
+                >
+                    {formMessage}
+                </p>
+            )}
         </form>
     );
 };

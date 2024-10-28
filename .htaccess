@@ -1,0 +1,34 @@
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Rediriger toutes les URL vers /index.html sauf si un fichier ou un dossier existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    # Cache JS et CSS pour 1 an
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Cache des images pour 1 an
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Appliquer les en-têtes de cache pour assurer une durée de cache longue
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|svg|webp)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+
+# Redirection de HTTP vers HTTPS pour sécuriser toutes les connexions
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

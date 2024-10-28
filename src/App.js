@@ -4,6 +4,7 @@ import {
     BrowserRouter as Router,
     Route,
     Routes,
+    Navigate,
     useLocation,
 } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -34,19 +35,23 @@ const headerVariants = {
     visible: { opacity: 1, y: 0 },
 };
 
-const MotionWrapper = ({ children }) => (
-    <motion.div
-        initial="initial"
-        animate="animate"
-        exit="exit"
-        variants={pageVariants}
-        transition={pageTransition}
-    >
-        {children}
-    </motion.div>
-);
+// MotionWrapper modifié pour conditionner les animations en fonction de isDesktop
+const MotionWrapper = ({ children, isDesktop }) =>
+    isDesktop ? (
+        <motion.div
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+            transition={pageTransition}
+        >
+            {children}
+        </motion.div>
+    ) : (
+        <div>{children}</div> // Pas d'animation sur mobile
+    );
 
-const AnimatedRoutes = () => {
+const AnimatedRoutes = ({ isDesktop }) => {
     const location = useLocation();
     const [loading, setLoading] = useState(true);
 
@@ -59,21 +64,29 @@ const AnimatedRoutes = () => {
     return (
         <AnimatePresence mode="wait">
             {loading ? (
-                <motion.div
-                    key="loader"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                >
-                    <Loader />
-                </motion.div>
+                isDesktop ? (
+                    <motion.div
+                        key="loader"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <Loader />
+                    </motion.div>
+                ) : (
+                    <Loader /> // Pas d'animation sur mobile
+                )
             ) : (
                 <Routes location={location} key={location.pathname}>
                     <Route
+                        path="/"
+                        element={<Navigate to="/explore" replace />}
+                    />
+                    <Route
                         path="/explore"
                         element={
-                            <MotionWrapper>
+                            <MotionWrapper isDesktop={isDesktop}>
                                 <Explore />
                             </MotionWrapper>
                         }
@@ -81,7 +94,7 @@ const AnimatedRoutes = () => {
                     <Route
                         path="/services"
                         element={
-                            <MotionWrapper>
+                            <MotionWrapper isDesktop={isDesktop}>
                                 <Services />
                             </MotionWrapper>
                         }
@@ -89,23 +102,15 @@ const AnimatedRoutes = () => {
                     <Route
                         path="/contact"
                         element={
-                            <MotionWrapper>
+                            <MotionWrapper isDesktop={isDesktop}>
                                 <Contact />
-                            </MotionWrapper>
-                        }
-                    />
-                    <Route
-                        path="/"
-                        element={
-                            <MotionWrapper>
-                                <Explore />
                             </MotionWrapper>
                         }
                     />
                     <Route
                         path="*"
                         element={
-                            <MotionWrapper>
+                            <MotionWrapper isDesktop={isDesktop}>
                                 <NotFound />
                             </MotionWrapper>
                         }
@@ -137,21 +142,24 @@ const App = () => {
                 {!loading && (
                     <>
                         <PromotionBanner />
-                        <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            exit="hidden"
-                            variants={headerVariants}
-                            transition={{ duration: 0.5 }}
-                            style={{ paddingTop: "50px" }} // Adjusts for PromotionBanner height
-                        >
+                        {isDesktop ? (
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                exit="hidden"
+                                variants={headerVariants}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Header />
+                            </motion.div>
+                        ) : (
                             <Header />
-                        </motion.div>
+                        )}
                     </>
                 )}
             </AnimatePresence>
             <main>
-                <AnimatedRoutes />
+                <AnimatedRoutes isDesktop={isDesktop} />
                 {isDesktop && <FollowPointerBox />}
             </main>
         </Router>
