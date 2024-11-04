@@ -28,8 +28,6 @@ const Header = () => {
     return (
         <header className={`header ${isMenuOpen ? "nav-open" : ""}`}>
             <div className="header-container">
-                <h1 className="logo"></h1>
-
                 {/* Menu burger button */}
                 <button
                     className={`menu-button ${isMenuOpen ? "open" : ""}`}

@@ -35,7 +35,7 @@ const headerVariants = {
     visible: { opacity: 1, y: 0 },
 };
 
-// MotionWrapper modifié pour conditionner les animations en fonction de isDesktop
+// MotionWrapper for animations on desktop only
 const MotionWrapper = ({ children, isDesktop }) =>
     isDesktop ? (
         <motion.div
@@ -48,7 +48,7 @@ const MotionWrapper = ({ children, isDesktop }) =>
             {children}
         </motion.div>
     ) : (
-        <div>{children}</div> // Pas d'animation sur mobile
+        <div>{children}</div>
     );
 
 const AnimatedRoutes = ({ isDesktop }) => {
@@ -75,7 +75,7 @@ const AnimatedRoutes = ({ isDesktop }) => {
                         <Loader />
                     </motion.div>
                 ) : (
-                    <Loader /> // Pas d'animation sur mobile
+                    <Loader />
                 )
             ) : (
                 <Routes location={location} key={location.pathname}>
@@ -124,7 +124,9 @@ const AnimatedRoutes = ({ isDesktop }) => {
 const App = () => {
     const [loading, setLoading] = useState(true);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
+    const [showHeader, setShowHeader] = useState(false);
 
+    // Handle resize for desktop/mobile detection
     useEffect(() => {
         const handleResize = () => setIsDesktop(window.innerWidth > 768);
         window.addEventListener("resize", handleResize);
@@ -133,6 +135,27 @@ const App = () => {
         return () => {
             clearTimeout(timer);
             window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+
+    // Debounced scroll detection
+    useEffect(() => {
+        let timeout = null;
+
+        const handleScroll = () => {
+            if (timeout) clearTimeout(timeout);
+            setShowHeader(false); // Hide header while scrolling
+
+            // Show header after user stops scrolling
+            timeout = setTimeout(() => {
+                setShowHeader(true);
+            }, 300); // 300ms delay after scrolling stops
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            clearTimeout(timeout);
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
@@ -145,7 +168,7 @@ const App = () => {
                         {isDesktop ? (
                             <motion.div
                                 initial="hidden"
-                                animate="visible"
+                                animate={showHeader ? "visible" : "hidden"}
                                 exit="hidden"
                                 variants={headerVariants}
                                 transition={{ duration: 0.5 }}

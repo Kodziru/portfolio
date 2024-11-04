@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from "react";
-import { motion, useAnimation } from "framer-motion";
+import React, { useState, useCallback } from "react";
 import {
     FaHtml5,
     FaCss3Alt,
@@ -15,57 +14,12 @@ import { SiFirebase, SiScikitlearn } from "react-icons/si";
 import classNames from "classnames";
 import "../../styles/mainPage/Skills.css";
 
-// Configuration d’un observateur global
-const useInView = (ref, threshold = 0.5) => {
-    const [isInView, setIsInView] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => setIsInView(entry.isIntersecting),
-            { threshold }
-        );
-
-        if (ref.current) observer.observe(ref.current);
-        return () => ref.current && observer.unobserve(ref.current);
-    }, [ref, threshold]);
-
-    return isInView;
-};
-
-// Variantes d'animation
-const fadeUpVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: "easeInOut" },
-    },
-};
-
-// Effet de hover pour desktop uniquement
-const hoverVariants = {
-    scale: 1.05,
-    transition: { type: "spring", stiffness: 260, damping: 20 },
-};
-
-// Composant pour chaque compétence
-const SkillItem = ({ skill, lockedSkill, handleLockSkill, isDesktop }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, 0.1);
-    const controls = useAnimation();
+// Composant pour afficher chaque skill
+const SkillItem = ({ skill, lockedSkill, handleLockSkill }) => {
     const isLocked = lockedSkill === skill.name;
 
-    useEffect(() => {
-        if (isInView && isDesktop) {
-            controls.start("visible");
-        } else {
-            controls.start("hidden");
-        }
-    }, [isInView, controls, isDesktop]);
-
     return (
-        <motion.div
-            ref={ref}
+        <div
             className={classNames("skill-item", { locked: isLocked })}
             onClick={() => handleLockSkill(skill.name)}
             onKeyPress={(e) => e.key === "Enter" && handleLockSkill(skill.name)}
@@ -74,23 +28,20 @@ const SkillItem = ({ skill, lockedSkill, handleLockSkill, isDesktop }) => {
             aria-pressed={isLocked}
             aria-label={
                 isLocked
-                    ? `${skill.name} est verrouillé. Appuyez sur Entrée pour le déverrouiller.`
-                    : `${skill.name} est déverrouillé. Appuyez sur Entrée pour le verrouiller.`
+                    ? `${skill.name} is locked. Press Enter to unlock.`
+                    : `${skill.name} is unlocked. Press Enter to lock.`
             }
-            initial="hidden"
-            animate={isDesktop ? controls : "visible"}
-            variants={isDesktop ? fadeUpVariants : {}} // Désactive les animations de visibilité sur mobile
-            whileHover={isDesktop ? hoverVariants : {}} // Pas d'animation de hover sur mobile
         >
             <div className="icon-container">{skill.icon}</div>
             <div className="skill-text">
                 <span>{skill.name}</span>
                 {isLocked && <p className="skill-details">{skill.details}</p>}
             </div>
-        </motion.div>
+        </div>
     );
 };
-// Données des compétences
+
+// Séparation des données des compétences avec descriptions personnalisées
 const skillData = [
     {
         name: "HTML5",
@@ -159,23 +110,15 @@ const skillData = [
             "Firebase est un outil que j'utilise à un niveau débutant. Je l'ai utilisé principalement pour des applications simples en temps réel, et je suis en train de perfectionner mes connaissances.",
     },
 ];
+
 // Composant principal Skills
 const Skills = () => {
     const [lockedSkill, setLockedSkill] = useState(null);
-    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 768);
-
-    useEffect(() => {
-        const handleResize = () => setIsDesktop(window.innerWidth > 768);
-
-        // Assurer l'activation de handleResize uniquement pour desktop
-        if (isDesktop) {
-            window.addEventListener("resize", handleResize);
-        }
-        return () => window.removeEventListener("resize", handleResize);
-    }, [isDesktop]);
 
     const handleLockSkill = useCallback(
-        (skill) => setLockedSkill(skill === lockedSkill ? null : skill),
+        (skill) => {
+            setLockedSkill(skill === lockedSkill ? null : skill);
+        },
         [lockedSkill]
     );
 
@@ -187,7 +130,6 @@ const Skills = () => {
                     skill={skill}
                     lockedSkill={lockedSkill}
                     handleLockSkill={handleLockSkill}
-                    isDesktop={isDesktop} // Passe isDesktop à chaque compétence
                 />
             ))}
         </div>

@@ -1,5 +1,4 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
 import ReusableModal from "../components/modal/ReusableModal";
 import ProgressBar from "../components/explore/ProgressBar";
 import Skills from "../components/explore/Skills";
@@ -24,20 +23,7 @@ const Explore = () => {
         launchDate: "",
     });
     const [loading, setLoading] = useState(false);
-    useEffect(() => {
-        if (isModalOpen) {
-            // Désactive le défilement du corps lorsque le modal est ouvert
-            document.body.style.overflow = "hidden";
-        } else {
-            // Réactive le défilement du corps lorsque le modal est fermé
-            document.body.style.overflow = "auto";
-        }
 
-        // Nettoyage lors du démontage du composant
-        return () => {
-            document.body.style.overflow = "auto";
-        };
-    }, [isModalOpen]);
     const sectionRefs = useRef([]);
 
     const setSectionRef = useCallback((el, index) => {
@@ -45,6 +31,25 @@ const Explore = () => {
             sectionRefs.current[index] = el;
         }
     }, []);
+
+    // Effect to automatically scroll to the "About" section on page load
+    useEffect(() => {
+        if (sectionRefs.current[0]) {
+            sectionRefs.current[0].scrollIntoView({ behavior: "smooth" });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [isModalOpen]);
 
     const openModal = async (projectPath) => {
         if (!projectPath) {
@@ -75,6 +80,7 @@ const Explore = () => {
             console.error("Erreur de chargement du projet:", error);
         }
     };
+
     const closeModal = () => setModalOpen(false);
 
     useEffect(() => {
@@ -136,7 +142,7 @@ const Explore = () => {
                 isOpen={isModalOpen}
                 onRequestClose={closeModal}
                 title={modalContent.title}
-                projectInfo={modalContent} // Ajoutez cette ligne
+                projectInfo={modalContent}
             >
                 {loading ? (
                     <p>Chargement...</p>
@@ -155,13 +161,11 @@ const Explore = () => {
                         ) : (
                             <p>Aucune image disponible</p>
                         )}
-
                         {modalContent.body ? (
                             <p>{modalContent.body}</p>
                         ) : (
                             <p>Aucune description</p>
                         )}
-
                         {modalContent.progress > 0 ? (
                             <>
                                 <h3>Progression</h3>
@@ -175,7 +179,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucune progression</p>
                         )}
-
                         {modalContent.technologies?.length > 0 ? (
                             <>
                                 <h3>Technologies utilisées</h3>
@@ -190,7 +193,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucune technologie utilisée</p>
                         )}
-
                         {modalContent.features?.length > 0 ? (
                             <>
                                 <h3>Fonctionnalités</h3>
@@ -216,7 +218,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucune fonctionnalité spécifiée</p>
                         )}
-
                         {modalContent.challenges ? (
                             <>
                                 <h3>Challenges rencontrés</h3>
@@ -225,7 +226,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucun challenge rencontré</p>
                         )}
-
                         {modalContent.futureGoals ? (
                             <>
                                 <h3>Objectifs futurs</h3>
@@ -234,7 +234,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucun objectif futur</p>
                         )}
-
                         {modalContent.lessonsLearned ? (
                             <>
                                 <h3>Leçons apprises</h3>
@@ -243,7 +242,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucune leçon apprise</p>
                         )}
-
                         {modalContent.impact ? (
                             <>
                                 <h3>Impact du projet</h3>
@@ -252,7 +250,6 @@ const Explore = () => {
                         ) : (
                             <p>Aucun impact</p>
                         )}
-
                         {modalContent.teamMembers?.length > 0 ? (
                             <>
                                 <h3>Membres de l'équipe</h3>

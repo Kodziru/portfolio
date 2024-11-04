@@ -43,7 +43,7 @@ const CheckboxGroup = ({
     onChange,
     required,
 }) => (
-    <div className="form-group ">
+    <div className="form-group">
         <label className="form-label">
             {label} {required && "*"}
         </label>
@@ -132,6 +132,7 @@ const CheckboxInput = ({ label, name, checked, onChange, required }) => (
         </label>
     </div>
 );
+
 const ContactForm = () => {
     const [formData, setFormData] = useState({
         contactPreferences: [],
@@ -141,7 +142,7 @@ const ContactForm = () => {
         otherSubject: "",
         message: "",
         acceptPolicy: false,
-        files: [], // Gérer plusieurs fichiers
+        files: [],
     });
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -149,7 +150,7 @@ const ContactForm = () => {
     const [formMessage, setFormMessage] = useState("");
     const [isSuccess, setIsSuccess] = useState(null);
 
-    // Référence pour le champ d'entrée de fichier
+    // File input reference
     const fileInputRef = useRef(null);
 
     const validate = () => {
@@ -207,7 +208,7 @@ const ContactForm = () => {
             const updatedFiles = prevData.files.filter((_, i) => i !== index);
             return { ...prevData, files: updatedFiles };
         });
-        resetFileInput(); // Réinitialiser l'entrée de fichier après suppression
+        resetFileInput();
     };
 
     const resetFileInput = () => {
@@ -226,20 +227,29 @@ const ContactForm = () => {
 
         setLoading(true);
 
-        // Préparation des données à envoyer
+        // Prepare the data to send
         const dataToSend = new FormData();
         dataToSend.append("fullName", formData.fullName);
         dataToSend.append("email", formData.email);
-        dataToSend.append("subject", formData.subject);
+        dataToSend.append(
+            "subject",
+            formData.subject === "autre"
+                ? formData.otherSubject
+                : formData.subject
+        );
         dataToSend.append("message", formData.message);
         dataToSend.append(
             "contactPreference",
             formData.contactPreferences.join(", ")
         );
 
+        formData.files.forEach((file, index) => {
+            dataToSend.append(`file${index + 1}`, file);
+        });
+
         try {
             const response = await fetch(
-                "https://emiservice.fr/send-email-contact.php", // URL PHP sur Hostinger
+                "https://emiservice.fr/send-email-contact.php",
                 {
                     method: "POST",
                     body: dataToSend,
@@ -254,6 +264,7 @@ const ContactForm = () => {
                     fullName: "",
                     email: "",
                     subject: "",
+                    otherSubject: "",
                     message: "",
                     acceptPolicy: false,
                     files: [],
@@ -271,6 +282,7 @@ const ContactForm = () => {
             setSubmitted(true);
         }
     };
+
     return (
         <form onSubmit={handleSubmit} className="contact-form">
             <TextInput
@@ -332,12 +344,10 @@ const ContactForm = () => {
                     type="file"
                     name="files"
                     multiple
-                    ref={fileInputRef} // Attacher la référence au champ de fichier
+                    ref={fileInputRef}
                     onChange={handleFileChange}
                 />
             </label>
-
-            {/* Afficher les fichiers téléchargés avec option de suppression */}
             {formData.files.length > 0 && (
                 <div className="uploaded-files">
                     <h4>Fichiers téléchargés :</h4>
